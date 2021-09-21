@@ -11,14 +11,17 @@ npm -v
 echo "Check python Version"
 python -V
 
+echo "Installing Serverless..."
+npm i serverless -g
+
 echo "Check package.json"
 if [[ ! -f "$GITHUB_WORKSPACE/package-lock.json" ]]; then
-  npm install
-else
-  echo "Installing Serverless and plugins..."
-  npm i serverless -g
+  echo "Installing Serverless plugins..."
   npm i serverless-python-requirements
   npm i serverless-plugin-canary-deployments
+else
+  echo "Installing Serverless local plugins..."
+  npm install
 fi
 
 if [ "$ENVIRONMENT" ]; then
@@ -35,5 +38,5 @@ else
     sls config credentials --provider aws --key "$AWS_ACCESS_KEY_ID" --secret "$AWS_SECRET_ACCESS_KEY"
   fi
   echo "Running sls deploy $ARGS..."
-  sls deploy $ARGS
+  sls deploy $ARGS -v
 fi
