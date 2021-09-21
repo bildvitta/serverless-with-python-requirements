@@ -12,3 +12,7 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.args }}
+
+branding:
+  icon: 'upload-cloud'
+  color: 'orange'
