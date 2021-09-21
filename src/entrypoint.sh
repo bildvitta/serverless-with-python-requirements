@@ -21,10 +21,12 @@ if [ "$ENVIRONMENT" ]; then
   echo "Running sls deploy $AWS_SECRET_ACCESS_KEY..."
   echo "Running sls deploy $AWS_ACCESS_KEY_ID..."
   echo "Running sls deploy $ENVIRONMENT..."
+  echo "sls config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_SECRET_ACCESS_KEY"
+  echo "sls deploy $ARGS"
 else
   echo "Running sls deploy $ARGS..."
   if [ "$AWS_ACCESS_KEY_ID" ] && [ "$AWS_SECRET_ACCESS_KEY" ]; then
-    sls config credentials --provider aws --key "$AWS_ACCESS_KEY_ID" --secret "$AWS_SECRET_ACCESS_KEY" "$ARGS"
+    sls config credentials --provider aws --key "$AWS_ACCESS_KEY_ID" --secret "$AWS_SECRET_ACCESS_KEY"
   fi
   sls deploy "$ARGS"
 fi
