@@ -14,6 +14,9 @@ python -V
 echo "Installing Serverless..."
 npm i serverless -g
 
+echo "Installing Pipenv and Poetry..."
+pip install pipenv poetry
+
 echo "Check package.json"
 if [[ ! -f "$GITHUB_WORKSPACE/package-lock.json" ]]; then
   echo "Installing Serverless plugins..."
