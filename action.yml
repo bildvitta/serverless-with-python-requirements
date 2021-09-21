@@ -1,4 +1,4 @@
-name: 'serverless-with-python-requirements'
+name: 'bildvitta-serverless-with-python-requirements'
 description: 'An action to deploy serverless projects made in python'
 
 inputs:
